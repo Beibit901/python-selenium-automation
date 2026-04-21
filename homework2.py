@@ -13,6 +13,19 @@ service = Service(driver_path)
 driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 
+driver.get('https://www.amazon.com')
+sleep(3)
+
+driver.find_element(By.XPATH, "//a[@data-nav-role='signin']").click()
+sleep(3)
+driver.find_element(By.CLASS_NAME, "a-icon-logo")
+driver.find_element(By.ID, "ap_email_login")
+driver.find_element(By.ID, "continue")
+driver.find_element(By.LINK_TEXT, "Conditions of Use")
+driver.find_element(By.LINK_TEXT, "Privacy Notice")
+driver.find_element(By.LINK_TEXT, "Need help?")
+
+
 driver.get('https://www.target.com/ ')
 driver.find_element(By.XPATH, "//a[@data-test='@web/AccountLink']").click()
 
