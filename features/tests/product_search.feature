@@ -21,4 +21,9 @@ Feature: Test cases for Product Search on Target
     |sugar          |sugar        |
 #    |茶             |茶           |
 
+  Scenario: Verify that user can see product names and images
+    Given Open Target main page
+    When Search for AirPods
+    Then Verify that every product has a name and an image
+
 
