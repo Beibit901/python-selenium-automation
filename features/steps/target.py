@@ -13,10 +13,9 @@ def click_on_cart_icon(context):
     cart_icon.click()
     sleep(1)
 
-@then('Verify "Your cart is empty" message is shown')
-def verify_message(context):
-    message = context.driver.find_element(By.XPATH, '//h1[text()="Your cart is empty"]')
-    assert message.text == 'Your cart is empty'
+@given('Open the Target Circle page')
+def open_target_circle(context):
+    context.driver.get('https://www.target.com/circle')
     sleep(1)
 
 @when('Click Sign In')
@@ -26,9 +25,27 @@ def click_sign_in(context):
     context.driver.find_element(By.XPATH, "//*[@data-test='accountNav-signIn']").click()
     sleep(1)
 
+@when("Search for {product}")
+def search_for_product(context):
+    pass
+
+
+@then('Verify "Your cart is empty" message is shown')
+def verify_message(context):
+    message = context.driver.find_element(By.XPATH, '//h1[text()="Your cart is empty"]')
+    assert message.text == 'Your cart is empty'
+    sleep(1)
+
 @then('Verify Sign In form opened')
 def verify_sign_in(context):
     message = context.driver.find_element(By.XPATH,"//h1[text()='Sign in or create account']")
     sleep(1)
     assert message.text == 'Sign in or create account'
     sleep(1)
+@then('verify that search worked for {expected_product}')
+def verify_search_worked(context, expected_product):
+    pass
+
+@then('verify there are 2 story cards under “Unlock added value”')
+def verify_2_story_cards(context):
+    pass
