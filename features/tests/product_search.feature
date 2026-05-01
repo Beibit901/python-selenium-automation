@@ -1,15 +1,5 @@
 Feature: Test cases for Product Search on Target
 
-  Scenario: User can search for a product "tea" on Target
-    Given Open Target main page
-    When Search for tea
-    Then Verify search results for tea shown
-
-  Scenario: User can search for a product "coffee" on Target
-    Given Open Target main page
-    When Search for coffee
-    Then Verify search results for coffee shown
-
   Scenario Outline: User can search for products
     Given Open Target main page
     When Search for <search_query>
@@ -19,6 +9,7 @@ Feature: Test cases for Product Search on Target
     |Coffee         |Coffee       |
     |coffee cup     |coffee cup   |
     |sugar          |sugar        |
+    |tea            |tea          |
 #    |茶             |茶           |
 
 
