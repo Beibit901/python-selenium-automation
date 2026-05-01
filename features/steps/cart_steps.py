@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
-CART_EMPTY_MSG = (By.CSS_SELECTOR, '[data-test="boxEmptyMsg"]')
 TOTAL_TXT = (By.XPATH, "//h2[./span[contains(text(), 'subtotal')]]")
 CART_PRODUCT_TITLE = (By.CSS_SELECTOR, '[data-test="cartItem-title"]')
 
@@ -20,9 +19,7 @@ def verify_cart_items(context, amount):
 
 @then("Verify 'Your cart is empty' message is shown")
 def verify_cart_empty_msg(context):
-    actual = context.driver.find_element(*CART_EMPTY_MSG).text
-    expected = 'Your cart is empty'
-    assert actual == expected, f'Expected {expected} did not match actual {actual}'
+    context.app.cart_page.verify_cart_empty_msg()
 
 
 @then("Verify correct product is in cart")

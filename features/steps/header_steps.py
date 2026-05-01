@@ -2,14 +2,13 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
-CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
 SEARCH_FIELD = (By.ID, 'search')
 SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
 
 
 @when('Click on Cart icon')
 def click_cart(context):
-    context.driver.find_element(*CART_ICON).click()
+    context.app.header.click_cart()
 
 
 @when("Search for {search_query}")

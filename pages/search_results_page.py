@@ -7,5 +7,7 @@ class SearchResultsPage(Page):
     SEARCH_RESULT_COUNT_TEXT = (By.XPATH, "//div[contains(@class, 'styles_resultCount')]")
 
     def verify_search_results(self, product: str):
-        actual_result = self.find_element(*self.SEARCH_RESULT_COUNT_TEXT).text
-        assert product in actual_result, f'Expected "{product}" not in actual "{actual_result}"'
+        self.verify_partial_text(product, *self.SEARCH_RESULT_COUNT_TEXT)
+
+    def verify_url_product(self, product):
+        self.wait_until_url_contains(product)

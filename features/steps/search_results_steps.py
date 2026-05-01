@@ -45,6 +45,11 @@ def verify_search_results(context, product):
     context.app.search_results_page.verify_search_results(product)
 
 
+@then("Verify URL has searchTerm={product}")
+def verify_url_product(context, product):
+    context.app.search_results_page.verify_url_product(product)
+
+
 @then('Verify that every product has a name and an image')
 def verify_products_name_img(context):
     # To see ALL listings (comment out if you only check top ones):
