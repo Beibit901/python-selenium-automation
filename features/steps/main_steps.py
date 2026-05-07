@@ -4,10 +4,7 @@ from selenium.webdriver.support import expected_conditions as ec
 
 @given("Open Target main page")
 def open_target_main(context):
-    context.driver.get("https://www.target.com/")
-    context.wait.until(
-        ec.element_to_be_clickable((By.XPATH, "//a[@data-test='@web/AccountLink']"))
-    )
+    context.app.main_page.open_main()
 
 
 @given("open the Target Circle page")
