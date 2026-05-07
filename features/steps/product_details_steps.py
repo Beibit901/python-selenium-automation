@@ -10,7 +10,7 @@ SELECTED_COLOR = (By.CSS_SELECTOR, "[data-test='@web/VariationComponent'] div")
 def open_target(context):
     context.driver.get(f'https://www.target.com/p/women-s-cloud-knit-long-sleeve-notch-collar-top-and-pants-pajama-set-auden/-/A-94889234?preselect=94879834#lnk=sametab')
     context.wait.until(
-        ec.invisibility_of_element_located(COLOR_OPTIONS)
+        ec.presence_of_all_elements_located(COLOR_OPTIONS)
     )
 
 
