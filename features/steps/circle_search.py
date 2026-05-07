@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
 
 @then ("verify there are {expected_amount} story cards")
 def open_target_main(context, expected_amount):

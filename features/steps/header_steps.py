@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
+from selenium.webdriver.support import expected_conditions as ec
 
 CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
 SEARCH_FIELD = (By.ID, 'search')
@@ -14,9 +14,13 @@ def click_cart(context):
 
 @when("Search for {search_query}")
 def search_product(context, search_query):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(search_query)
-    context.driver.find_element(*SEARCH_BTN).click()
-    sleep(10)
+    context.wait.until(
+        ec.visibility_of_element_located(SEARCH_FIELD)
+    ).send_keys(search_query)
+
+    context.wait.until(
+        ec.element_to_be_clickable(SEARCH_BTN)
+    ).click()
 
 
 @then("Verify header link container is shown")

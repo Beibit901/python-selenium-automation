@@ -1,21 +1,22 @@
 from selenium.webdriver.common.by import By
 from behave import given, then
 from time import sleep
-
-
+from selenium.webdriver.support import expected_conditions as ec
 COLOR_OPTIONS = (By.CSS_SELECTOR, "[data-test='@web/VariationComponent'] img")
 SELECTED_COLOR = (By.CSS_SELECTOR, "[data-test='@web/VariationComponent'] div")
 
 
 @given('Open target product A-91269718 page')
 def open_target(context):
-    context.driver.get(f'https://www.target.com/p/wranglers-men-39-s-relaxed-fit-straight-jeans/-/A-91269718?preselect=90919011#lnk=sametab')
-    sleep(5)
+    context.driver.get(f'https://www.target.com/p/women-s-cloud-knit-long-sleeve-notch-collar-top-and-pants-pajama-set-auden/-/A-94889234?preselect=94879834#lnk=sametab')
+    context.wait.until(
+        ec.invisibility_of_element_located(COLOR_OPTIONS)
+    )
 
 
 @then('Verify user can click through colors')
 def click_and_verify_colors(context):
-    expected_colors = ['Navy Denim', 'Dark Wash', 'Light Wash']
+    expected_colors = ['Light Pink', 'Light Blue']
     actual_colors = []
 
     colors = context.driver.find_elements(*COLOR_OPTIONS)  # [webelement1, webelement2, webelement3]
@@ -24,7 +25,7 @@ def click_and_verify_colors(context):
     for c in colors:
         c.click()
         # for visibility only:
-        sleep(0.5)
+        sleep(2)
 
         selected_color = context.driver.find_element(*SELECTED_COLOR).text  # 'Color\nBlack'
         print('Current color', selected_color)
