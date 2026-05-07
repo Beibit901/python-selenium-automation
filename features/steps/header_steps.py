@@ -16,7 +16,7 @@ def click_cart(context):
 def search_product(context, search_query):
     context.driver.find_element(*SEARCH_FIELD).send_keys(search_query)
     context.driver.find_element(*SEARCH_BTN).click()
-    sleep(7)
+    sleep(10)
 
 
 @then("Verify header link container is shown")
